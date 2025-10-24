@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net472;net8.0-windows</TargetFrameworks>
+    <RootNamespace>MyProject</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyProject.SharedResources\MyProject.SharedResources.csproj" />
+  </ItemGroup>
+
+  <!--
+    Automatically includes all .resx files from MyProject.SharedResources project.
+    Allow sharing WinForms resources without duplicating them on each project.
+    -->
+  <ItemGroup>
+    <None Include="..\MyProject.SharedResources\*.resx">
+      <Link>$([System.String]::Copy('%(FileName)')).resx</Link>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>MyProject</CustomToolNamespace>
+      <LastGenOutput>$([System.String]::Copy('%(FileName)')).Designer.cs</LastGenOutput>
+      <Visible>False</Visible>
+    </None>
+    <Compile Remove="..\MyProject.SharedResources\*.Designer.cs" />
+    <None Include="..\MyProject.SharedResources\*.Designer.cs">
+      <DependentUpon>$([System.String]::Copy('%(FileName)').Replace('.Designer', '.resx'))</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <CustomToolNamespace>MyProject</CustomToolNamespace>
+      <AutoGen>True</AutoGen>
+      <Visible>False</Visible>
+    </None>
+  </ItemGroup>
+
+</Project>
