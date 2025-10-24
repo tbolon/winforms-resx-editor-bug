@@ -21,6 +21,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <CustomToolNamespace>MyProject</CustomToolNamespace>
       <LastGenOutput>$([System.String]::Copy('%(FileName)')).Designer.cs</LastGenOutput>
+      <!-- 👇 Hide items in Solution Explorer -->
       <Visible>False</Visible>
     </None>
     <Compile Remove="..\MyProject.SharedResources\*.Designer.cs" />
@@ -29,6 +30,7 @@
       <DesignTime>True</DesignTime>
       <CustomToolNamespace>MyProject</CustomToolNamespace>
       <AutoGen>True</AutoGen>
+      <!-- 👇 Hide items in Solution Explorer -->
       <Visible>False</Visible>
     </None>
   </ItemGroup>
